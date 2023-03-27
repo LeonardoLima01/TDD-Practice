@@ -27,3 +27,27 @@ export let calculator = {
     return x * y;
   },
 };
+
+function isLetter(c) {
+  c = String.fromCharCode(c);
+  return c.toLowerCase() != c.toUpperCase();
+}
+
+export function caesarCipher(string, factor = 0) {
+  if (!string) return "Type a string to be encrypted";
+
+  let encryptedString = "";
+
+  for (let i = 0; i < string.length; i++) {
+    // If it's a space, keep it
+    if (string.charCodeAt(i) == "32") encryptedString += " ";
+    // If it's not a letter, probably ponctuation, then keep it
+    else if (!isLetter(string.charCodeAt(i)))
+      encryptedString += String.fromCharCode(string.charCodeAt(i));
+    // Else if it's not a space, and it's a letter, then encrypt it
+    else {
+      encryptedString += String.fromCharCode(string.charCodeAt(i) + factor);
+    }
+  }
+  return encryptedString;
+}
