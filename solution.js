@@ -46,7 +46,24 @@ export function caesarCipher(string, factor = 0) {
       encryptedString += String.fromCharCode(string.charCodeAt(i));
     // Else if it's not a space, and it's a letter, then encrypt it
     else {
-      encryptedString += String.fromCharCode(string.charCodeAt(i) + factor);
+      // If char is Uppercased
+      if (string.charCodeAt(i) <= 90) {
+        if (string.charCodeAt(i) + factor > 90) {
+          encryptedString += String.fromCharCode(
+            64 + (string.charCodeAt(i) + factor - 90)
+          );
+        } else
+          encryptedString += String.fromCharCode(string.charCodeAt(i) + factor);
+      }
+      // If char is lowercased
+      else {
+        if (string.charCodeAt(i) + factor >= 122) {
+          encryptedString += String.fromCharCode(
+            96 + (string.charCodeAt(i) + factor - 122)
+          );
+        } else
+          encryptedString += String.fromCharCode(string.charCodeAt(i) + factor);
+      }
     }
   }
   return encryptedString;
