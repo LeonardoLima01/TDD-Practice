@@ -3,6 +3,7 @@ import {
   reverseString,
   calculator,
   caesarCipher,
+  analyzeArray,
 } from "./solution";
 
 test("Capitalize word", () => {
@@ -37,4 +38,13 @@ test("Encrypts string to caesar cipher", () => {
   );
   expect(caesarCipher("zzz", 1)).toEqual("aaa");
   expect(caesarCipher("zz ! ZZ ? abCD...", 1)).toEqual("aa ! AA ? bcDE...");
+});
+
+test("Correctly analyze array of numbers", () => {
+  let object = analyzeArray([1, 8, 3, 4, 2, 6]);
+  expect(analyzeArray()).toEqual("Insert an array to be analyzed");
+  expect(object.average).toEqual(4);
+  expect(object.min).toEqual(1);
+  expect(object.max).toEqual(8);
+  expect(object.length).toEqual(6);
 });

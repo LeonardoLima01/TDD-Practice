@@ -68,3 +68,22 @@ export function caesarCipher(string, factor = 0) {
   }
   return encryptedString;
 }
+
+export function analyzeArray(arr) {
+  if (typeof arr != "object") return "Insert an array to be analyzed";
+
+  let average =
+    arr.length % 2 != 0
+      ? arr.sort()[(arr.length - 1) / 2]
+      : arr.sort()[arr.length / 2];
+  let min = arr.sort()[0];
+  let max = arr.sort()[arr.length - 1];
+  let length = arr.length;
+
+  return {
+    average,
+    min,
+    max,
+    length,
+  };
+}
